@@ -1,6 +1,6 @@
 {
   "name": "wireguard-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A wrapper for the commands wg and wg-quick",
   "main": "src/index.js",
   "repository": {
