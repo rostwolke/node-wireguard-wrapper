@@ -66,6 +66,18 @@ class Peer {
 		this._persistentKeepalive = value === 'off' ? false : parseInt(value);
 	}
 
+	toJson(){
+		return {
+			publicKey: this.publicKey,
+			endpoint: this.endpoint,
+			allowedIps: this.allowedIps,
+			latestHandshake: this.latestHandshake,
+			transferRx: this.transferRx,
+			transferTx: this.transferTx,
+			persistentKeepalive: this.persistentKeepalive
+		};
+	}
+
 }
 
 module.exports = Peer;

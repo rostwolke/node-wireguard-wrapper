@@ -34,16 +34,16 @@ class Interface {
 			case 'mtu':
 				this.mtu = value;
 				break;
-			case 'preUp':
+			case 'preup':
 				this.preUp = value;
 				break;
-			case 'postUp':
+			case 'postup':
 				this.postUp = value;
 				break;
-			case 'preDown':
+			case 'predown':
 				this.preDown = value;
 				break;
-			case 'postDown':
+			case 'postdown':
 				this.postDown = value;
 				break;
 		}
@@ -172,6 +172,26 @@ class Interface {
 		for(let i = 0; i < this.peers.length; i++){
 			data += '\n';
 			data += this.peers[i].toString();
+		}
+		return data;
+	}
+
+	toJson(){
+		let data = {
+			address: this.address,
+			listenPort: this.listenPort,
+			privateKey: this.privateKey,
+			dns: this.dns,
+			table: this.table,
+			mtu: this.mtu,
+			preUp: this.preUp,
+			postUp: this.postUp,
+			preDown: this.preDown,
+			postDown: this.postDown,
+			peers: []
+		};
+		for(let peerKey of Object.keys(this._peers)){
+			data.peers.push(this._peers[peerKey].toJson());
 		}
 		return data;
 	}

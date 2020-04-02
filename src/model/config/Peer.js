@@ -73,6 +73,15 @@ class Peer {
 		return data;
 	}
 
+	toJson(){
+		return {
+			allowedIps: this.allowedIps,
+			endpoint: this.endpoint,
+			publicKey: this.publicKey,
+			persistentKeepalive: this.persistentKeepalive
+		};
+	}
+
 }
 
 module.exports = Peer;

@@ -48,6 +48,20 @@ class Interface {
 		this._peers[peer.publicKey] = peer;
 	}
 
+	toJson(){
+		let data = {
+			name: this.name,
+			listenPort: this.listenPort,
+			publicKey: this.publicKey,
+			privateKey: this.privateKey,
+			peers: []
+		};
+		for(let peerKey of Object.keys(this._peers)){
+			data.peers.push(this._peers[peerKey].toJson());
+		}
+		return data;
+	}
+
 }
 
 module.exports = Interface;
