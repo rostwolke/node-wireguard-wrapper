@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A wrapper for the commands wg and wg-quick",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rostwolke/node-wireguard-wrapper.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
