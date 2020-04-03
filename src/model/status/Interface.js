@@ -9,7 +9,7 @@ class Interface {
 	}
 
 	get name(){
-		return this._address;
+		return this._name;
 	}
 
 	set name(value){
