@@ -13,6 +13,9 @@ class Wg {
 			device = 'all';
 		}
 		return new Promise(function(resolve, reject){
+			if(!/^[A-Za-z0-9]*$/.test(device)) {
+				return reject("Invalid device/interface name");
+			}
 			exec(`wg show ${device} dump`, function(error, stdout, stderr){
 				if(error){
 					return reject(`Exec error: ${error}`);
@@ -61,6 +64,9 @@ class Wg {
 				return reject('No device/interface specified');
 			}
 
+			if(!/^[A-Za-z0-9]*$/.test(device)) {
+				return reject('Invalid device/interface name');
+			}
 			exec(`wg showconf ${device}`, function(error, stdout, stderr){
 				if(error){
 					return reject(`Exec error: ${error}`);
@@ -132,6 +138,10 @@ class Wg {
 
 	static pubkey(privateKey){
 		return new Promise(function(resolve, reject){
+			if(!/^[A-Za-z0-9+/=]*$/.test(privateKey)){
+				return reject('Invalid private key');
+			}
+			
 			exec(`echo '${privateKey}' | wg pubkey`, function(error, stdout, stderr){
 				if(error){
 					return reject(`Exec error: ${error}`);
